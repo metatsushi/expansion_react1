@@ -4,8 +4,9 @@ import express from "express";
 // おみくじのrouterを読み込む
 import { omikujiRouter } from "./routes/omikuji.route.js";
 // じゃんけんのrouterを読みこむ
-import { jankenRouter }  from "./routes/janken.router.js";
-
+import { jankenRouter }  from "./routes/janken.route.js";
+//TodolistのRouterを読み込む
+import { todoRouter }  from "./routes/todo.route.js";
 
 const app = express();
 //POSTデータを受け取るために以下2行を追加
@@ -27,6 +28,10 @@ app.use("/omikuji", (req, res)=> omikujiRouter(req, res));
 
 // じゃんけんのルーティングを追加
 app.use("/janken", (req, res)=> jankenRouter(req, res));
+
+//TodoListのルーティングを追加
+app.use("/todo", (req, res)=> todoRouter(req, res));
+
 
 app.listen(port, () => {
  console.log(`Example app listening at http://localhost:${port}`);
