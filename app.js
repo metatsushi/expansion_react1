@@ -8,6 +8,8 @@ import { jankenRouter }  from "./routes/janken.route.js";
 //TodolistのRouterを読み込む
 import { todoRouter }  from "./routes/todo.route.js";
 
+import { slackRouter } from "./routes/slack.route.js";
+
 const app = express();
 //POSTデータを受け取るために以下2行を追加
 app.use(express.urlencoded({ extended: true }));
@@ -32,6 +34,7 @@ app.use("/janken", (req, res)=> jankenRouter(req, res));
 //TodoListのルーティングを追加
 app.use("/todo", (req, res)=> todoRouter(req, res));
 
+app.use("/slack", (req,res) => slackRouter(req,res));
 
 app.listen(port, () => {
  console.log(`Example app listening at http://localhost:${port}`);
